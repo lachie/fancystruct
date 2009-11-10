@@ -62,3 +62,8 @@ eg "can be declared with class-like syntax (plain old inheritance)" do
   set_attribs p
   check_fancystruct p
 end
+
+eg "calling with a hash returns an instance of an anonymous FancyStruct" do
+  fs = FancyStruct :first_name => fn, :last_name => ln
+  check_fancystruct fs
+end

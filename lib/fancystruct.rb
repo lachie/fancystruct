@@ -19,6 +19,7 @@ class FancyStruct
   
   def set(attribs)
     attribs.each { |name,val| self.set_attrib(name, val) }
+    self
   end
   
   def set_attrib(name,val)
@@ -28,8 +29,13 @@ class FancyStruct
 end
 
 def FancyStruct(*attribs, &blk)
-  c = Class.new(FancyStruct)
-  c.attribs *attribs
-  c.class_eval(&blk) if blk
-  c
+  if attribs.size == 1 && attribs.first.is_a?(Hash)
+    keys, values = attribs.first.to_a.transpose
+    FancyStruct(*keys).new(*values)
+  else
+    c = Class.new(FancyStruct)
+    c.attribs *attribs
+    c.class_eval(&blk) if blk
+    c
+  end
 end
