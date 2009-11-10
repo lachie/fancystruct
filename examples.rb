@@ -67,3 +67,9 @@ eg "calling with a hash returns an instance of an anonymous FancyStruct" do
   fs = FancyStruct :first_name => fn, :last_name => ln
   check_fancystruct fs
 end
+
+eg "deep" do
+  fs = FancyStruct :first_name => fn, :last_name => ln, 
+    :projects => [ { :name => 'Fancyviews' }, { :name => 'Fancydata' } ]
+  Check(fs.projects.first.name).is('Fancyviews')
+end
