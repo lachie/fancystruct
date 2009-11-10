@@ -12,9 +12,11 @@ Gem::Specification.new do |s|
   s.date = %q{2009-11-10}
   s.email = %q{myles@myles.id.au}
   s.files = [
-    "Rakefile",
+    ".gitignore",
+     "Rakefile",
      "VERSION",
      "examples.rb",
+     "fancystruct.gemspec",
      "lib/fancystruct.rb"
   ]
   s.homepage = %q{http://github.com/quackingduck/fancystruct}
