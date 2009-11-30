@@ -73,3 +73,11 @@ eg "deep" do
     :projects => [ { :name => 'Fancyviews' }, { :name => 'Fancydata' } ]
   Check(fs.projects.first.name).is('Fancyviews')
 end
+
+eg "can be equal to another FancyStruct" do
+  p1 = Person.new
+  p2 = Person.new
+  set_attribs p1
+  set_attribs p2
+  Check(p1).is(p2)
+end

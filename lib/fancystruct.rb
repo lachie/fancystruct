@@ -56,7 +56,14 @@ class FancyStruct
   def set_attrib(name,val)
     self.send(name.to_s+'=', val)
   end
-  
+
+  def ==(other)
+    return false unless other.kind_of?(FancyStruct)
+    self.class.attribs.all? {|name| 
+      other.send(name) == self.send(name)
+    }
+  end
+
 end
 
 def FancyStruct(*attribs, &blk)
